@@ -2,7 +2,7 @@
 ## cmakefiles
 #################
 
-CMakeRuleHashes.txt
+*.txt
 
 CMakeFiles/
 
