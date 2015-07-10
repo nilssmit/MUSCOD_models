@@ -1,1 +1,0 @@
-/usr/bin/c++  -fPIC  -fmessage-length=0 -pthread -O2 -g  -shared -Wl,-soname,libWalking.so -o libWalking.so CMakeFiles/Walking.dir/SRC/PB_Constraints.cpp.o CMakeFiles/Walking.dir/SRC/PB_Dynamics.cpp.o CMakeFiles/Walking.dir/SRC/Walking.cpp.o 
