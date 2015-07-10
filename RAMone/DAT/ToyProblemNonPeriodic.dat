@@ -1,0 +1,292 @@
+
+// Used Library:
+libmodel
+libToyProblemNonPeriodic
+
+// Used Integrators:
+libind
+ 0: ind_rkf45
+
+/***********************************************
+ * PHASE DEFINITIONS                           *
+ ***********************************************/
+// Interval names:
+h_name
+ 0: Flow
+
+//  # of multiple shooting intervals on model stages nshoot:
+nshoot
+ 0: 100 // Flow
+
+// Model stage duration start values:
+h
+ 0:  18 // Flow
+
+// Model stage duration scale factors:
+h_sca
+ 0:   1 // Flow
+
+// Model stage duration lower bound:
+h_min
+ 0:   0 // Flow
+
+// Model stage duration upper bound:
+h_max
+ 0:   25 // Flow
+
+// Model stage duration fixed value Ctrlags:
+h_fix
+ 0: 0 // Flow
+
+/***********************************************
+ * STATE DEFINITIONS                           *
+ ***********************************************/
+// State names:
+xd_name
+ 0: y
+ 1: d y
+
+// Specification mode for state variable start values:
+s_spec
+2 // All values sd(*,*), sa(*,*) specified in data file
+
+// States at stage 1 point 1:
+sd(0,S)
+ 0:   0 // y
+ 1:   5 // dy
+
+// Scaling for all model stages:
+sd_sca(*,*)
+ 0:   1.0000000 // y
+ 1:   1.0000000 // dy
+
+// Minimal values for all model stages:
+sd_min(*,*)
+ 0: -100.0000000 // y
+ 1: -100.0000000 // dy
+
+// Maximal values for all model stages:
+sd_max(*,*)
+ 0: 100.0000000 // y
+ 1: 100.0000000 // dy
+
+// Fix some states to their initial values:
+sd_fix(0,S)
+ 0: 1 // y
+ 1: 1 // dy
+
+// Fix some states throughout integration:
+sd_fix(*,*)
+ 0: 0 // y
+ 1: 0 // dy
+
+/***********************************************
+ * ADJUSTABLE PARAMETER DEFINITIONS            *
+ ***********************************************/
+// Parameter names:
+p_name
+ 0: c_x
+ 1: sig_sq
+ 2: y_end
+ 3: dy_end
+
+
+// Inital values for all global parameters:
+p
+ 0:   4    // c_x
+ 1:   0.25 // sig_sq
+ 2:   0.00 // y_end
+ 3:   1.662368 // dy_end
+
+
+// Parameter scale factors:
+p_sca
+ 0:   1.0000000 // c_x
+ 1:   1.0000000 // sig_sq
+ 2:   1.0000000 // y_end
+ 3:   1.0000000 // dy_end
+
+// Parameter minimal values:
+p_min
+ 0:   4    // c_x
+ 1:   0.25 // sig_sq
+ 2:   -100 // y_end
+ 3:   -100 // dy_end
+
+// Parameter maximal values:
+p_max
+ 0:   4    // c_x
+ 1:   0.25 // sig_sq
+ 2:   +100 // y_end
+ 3:   +100 // dy_end
+
+// Parameter fixed values:
+p_fix
+ 0: 1 // c_x
+ 1: 1 // sig_sq
+ 2: 1 // y_end
+ 3: 1 // dy_end
+
+/***********************************************
+ * CONTROL DEFINITIONS                         *
+ ***********************************************/
+// Control names:
+u_name
+ 0: Ctrl
+
+// Control parameterization type:
+u_type(*)
+ 0: 2 // Ctrl
+
+// Control start values at stage 1 point 1:
+u(*,*)
+ 0:  0 // Ctrl
+
+// Control scale factors:
+u_sca(*,*)
+ 0:   1.0000000 // Ctrl
+
+// Control minimal values:
+u_min(*,*)
+ 0:  -2 // Ctrl
+
+// Control maximal values:
+u_max(*,*)
+ 0:  +2 // Ctrl
+
+// Excitation state fixed values:
+u_fix(*,*)
+ 0: 0 // Ctrl
+
+/***********************************************
+ * CONSTRAINT DEFINITIONS                      *
+ ***********************************************/
+// Decoupled i.p.c. scale factors:
+rd_sca(0,S)
+ALL:   1.0000000
+
+rd_sca(4,E)
+ALL:   1.0000000
+
+rc_sca
+ALL:   1.0000000
+
+/***********************************************
+ * OBJECTIVE FUNCTION DEFINITIONS              *
+ ***********************************************/
+// Objective function name:
+of_name
+Cost
+
+// Objective function scale:
+of_sca
+  0.5000000
+
+// Objective function expected lower bound:
+of_min
+  20.0000000
+
+// Objective function expected upper bound:
+of_max
+  50.0000000
+
+// # of values in history plot:
+nhist
+100
+
+/***********************************************
+ * CHOOSING LIBRARIES                          *
+ ***********************************************/
+libhessian
+hess_update
+
+libsolve
+solve_slse
+
+libcond
+cond_std
+
+libtchk
+tchk
+
+libmssqp
+mssqp_standard
+
+libeval
+eval_ind
+
+libqps
+qps_qpopt
+
+libplot
+plot_pgplot
+
+/***********************************************
+ * SETTING ALGORITHMIC PARAMETER               *
+ ***********************************************/
+options_acc
+  0.0000010
+
+options_ftol
+ -1.0000000
+
+options_itol
+ -1.0000000
+
+options_rfac
+  0.0000000
+
+options_levmar
+  0.0000000
+
+options_qp_featol
+  0.0000000
+
+options_qp_relax
+  1.1000000
+
+options_nhtopy
+  0.0000000
+
+options_frstart
+  0.0000000
+
+options_frmax
+  0.0000000
+
+options_itmax
+1000.0000000
+
+options_plevel_screen
+  0.0000000
+
+options_plevel_file
+  1.0000000
+
+options_plevel_matlab
+  0.0000000
+
+options_bCtrlag
+ -1.0000000
+
+options_qp_itmax
+10000.0000000
+
+options_qp_expand
+99999999.0000000
+
+options_sCtrlag
+  0.0000000
+
+options_options_wCtrlag
+  0.0000000
+
+options_cCtrlag
+  0.0000000
+
+options_output_ps
+  0.0000000
+
+options_output_gif
+  0.0000000
+

@@ -1,0 +1,82 @@
+#include <cmath>
+#include "def_usrmod.hpp"
+#include <PB_Constraints.h>
+
+
+#define  NMOS   3  /* Number of phases (MOdel Stages) */
+/* There are three different stages for the symmetrically walking prismatic biped:
+ * 0) Stance right until touchdown left (FlowMap)
+ * 1) Touchdown collision of both legs (JumpMap)
+ * 2) Double stance (FlowMap)
+ */
+#define  NXA    0  /* Number of algebraic states */
+#define  NPR    0  /* Number of local parameters */
+
+/** \brief Entry point for the muscod application */
+extern "C" void def_model(void);
+void def_model(void)
+{
+	/* Define problem dimensions */
+	def_mdims(NMOS, NPFree, rcfcn, rcfcne);
+	/* Define the first phase */
+	/* def_mstage(I, NXD, NXA, NU, mfcn, lfcn, jacmlo, jacmup, astruc, afcn, ffcn, gfcn, rwh, iwh)
+	 * Call to define a model stage with index I, where
+	 * NXD is the differential state dimension,
+	 * NXA the algebraic state dimension, and
+	 * NU is the control dimension.
+	 * mfcn is a pointer to a Mayer term function (or NULL) to be evaluated at the end of the stage, and
+	 * lfcn a pointer to a Lagrange term (or NULL).
+	 * For documentation of the left-hand side matrix function afcn, and of the integers jacmlo,
+	 * jacmup, and astruc that provide structural matrix information please consult the
+	 * DAESOL-manual [BBS99]; setting the integers to zero is equivalent to not defining
+	 * any structural information.
+	 * ffcn is a pointer to the differential right hand side function,
+	 * gfcn the pointer to the algebraic right hand side function (or NULL).
+	 * rwh, iwh are real and integer work arrays which can be used to pass a common workspace to the stage functions.
+	 *
+	 */
+	def_mstage( 0, // 0) Stance right until touchdown left (FlowMap)
+				NY, NXA, NU,
+				NULL, NULL,
+				0, 0, 0, NULL, ffcn_stanceRIGHT, NULL,
+				NULL, NULL
+				);
+	def_mstage( 1, // 1) Touchdown collision of both legs (JumpMap)
+				NY, NXA, NU,
+				NULL, NULL,
+				0, 0, 0, NULL, ffcn_collisionBOTH, NULL,
+				NULL, NULL
+				);
+	def_mstage( 2, // 2) Double stance (FlowMap)
+				NY, NXA, NU,
+				mfcn_COT, NULL,
+				0, 0, 0, NULL, ffcn_stanceBOTH, NULL,
+				0, NULL
+				);
+
+	/* Define constraints at the start point
+	 * i.e., the coupled constraints for periodicity and the conditions for liftoff of the left
+	 * leg (after the both legs were on the ground)	 */
+	def_mpc(0, "Start Point", NPR, rdfcn_singleLeg_n, rdfcn_singleLeg_ne, rdfcn_liftoffLEFT_LR, rcfcn_beginning);
+	/* Define constraints throughout the right stance phase:
+	 * i.e., the decoupled constraints for ground clearance and actuator speed and force	 */
+	def_mpc(0, "Interior Point", NPR, rdfcn_neConstraints_n, rdfcn_neConstraints_ne, rdfcn_neConstraints_lR, NULL);
+	/* Define constraints at the start of phase 1,
+	 * i.e., the conditions for touchdown of the left leg (with the right leg being on the ground)	 */
+	def_mpc(1,"Start Point", NPR, rdfcn_singleLeg_n, rdfcn_singleLeg_ne, rdfcn_touchdownLEFT_lR, NULL);
+	/* Define constraints throughout the touchdown collision:
+	 * i.e., the decoupled constraints for ground clearance and actuator speed and force	 */
+	def_mpc(1, "Interior Point", NPR, rdfcn_neConstraints_n, rdfcn_neConstraints_ne, rdfcn_neConstraints_lR, NULL);
+	/* Define constraints at the beginning of the double stance phase:
+	 * i.e., the decoupled constraints for ground clearance and actuator speed and force	 */
+	def_mpc(2, "Start Point", NPR, rdfcn_neConstraints_n, rdfcn_neConstraints_ne, rdfcn_neConstraints_LR, NULL);
+	/* Define constraints throughout the double stance phase:
+	 * i.e., the decoupled constraints for ground clearance and actuator speed and force	 */
+	def_mpc(2, "Interior Point", NPR, rdfcn_neConstraints_n, rdfcn_neConstraints_ne, rdfcn_neConstraints_LR, NULL);
+	/* Define constraints at the end point of phase 2
+	 * i.e., the coupled constraints for periodicity and the conditions for the average velocity	 */
+	def_mpc(2, "End Point", NPR, rdfcn_avgSpeed_n, rdfcn_avgSpeed_ne, rdfcn_avgSpeed, rcfcn_endSymmetric);
+
+	// Create output to a .mot and a .plt file
+	def_mio (NULL , motion_output, plot_output);
+}

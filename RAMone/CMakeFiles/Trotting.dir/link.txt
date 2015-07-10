@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC  -fmessage-length=0 -pthread -O2 -g  -shared -Wl,-soname,libTrotting.so -o libTrotting.so CMakeFiles/Trotting.dir/SRC/PB_Constraints.cpp.o CMakeFiles/Trotting.dir/SRC/PB_Dynamics.cpp.o CMakeFiles/Trotting.dir/SRC/Trotting.cpp.o 

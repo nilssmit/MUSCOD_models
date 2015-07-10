@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/weitaoxi/muscodgaitcreat/qradru_model/SRC/PB_Dynamics.cpp
+PB_Dynamics.h
+/home/weitaoxi/muscodgaitcreat/qradru_model/SRC/PB_Dynamics.h
+algorithm
+-
+
+/home/weitaoxi/muscodgaitcreat/qradru_model/SRC/PB_Dynamics.h
+iostream
+-
+Eigen/Dense
+-
+
