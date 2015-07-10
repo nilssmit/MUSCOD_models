@@ -1,4 +1,4 @@
-% This function creates a .dat file that as it is used by MUSCOD.  The
+%% This function creates a .dat file that as it is used by MUSCOD.  The
 % entire problem information is stored in the variable datStruct.  This
 % struct can, for example, be generated with the function 'CreateDatStruct'
 function CreateDatFile(FileName, datStruct)
