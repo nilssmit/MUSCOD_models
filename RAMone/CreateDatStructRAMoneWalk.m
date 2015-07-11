@@ -46,7 +46,7 @@ function datStruct = CreateDatStructRAMoneWalk(costFunction,v_avg,sigma,const_se
     p(4) = const_sel;      % Constraint selection index (const_sel) [binary flags]
 
     u  = zeros(4,1);
-    h  = [1;0;1];  
+    h  = [0.5;0;0.5];  
     nshoot = [10;1;10];
     
     typeString = 'Walking';
@@ -56,7 +56,7 @@ function datStruct = CreateDatStructRAMoneWalk(costFunction,v_avg,sigma,const_se
     datStruct.h_comment = {'Single stance until touchdown'; 'Touchdown'; 'Double stance until liftoff'};
     datStruct.nshoot = nshoot;
     datStruct.h      = h;
-    datStruct.h_sca  = [0.5;0;0.5];
+    datStruct.h_sca  = [1;0;1];
     datStruct.h_min  = [0.01;0.0;0.01];
     datStruct.h_max  = [2.0;0.0;2.0];
     datStruct.h_fix  = [0;1;0];
@@ -111,16 +111,18 @@ function datStruct = CreateDatStructRAMoneWalk(costFunction,v_avg,sigma,const_se
     datStruct.sd          = sd;
     datStruct.sd_sca      = ones(25,1);
     
-    % States are unlimited apart from the body height (which is bounded by [0,2])
-    % knee joints (which are bounded by [-3*pi/4, -0.05]), knee actuators 
-    % ([-3*pi/4, pi/4]), and hip joints ([-pi/2, pi/2])
+    % States are unlimited apart from the body height (which is bounded by [0.6,0.2])
+    % pitch ([-pi/4,pi/4]), hip joints ([-pi/2, pi/2]),  knee actuators 
+    % ([-3*pi/4, pi/4]), and knee joints ([-3*pi/4, -0.05]).
     datStruct.sd_min          = -100*ones(25,1);
-    datStruct.sd_min(3)       = 0;
+    datStruct.sd_min(3)       = 0.2;
+    datStruct.sd_min(5)       = -pi/4;
     datStruct.sd_min([7,11])  = -pi/2;
     datStruct.sd_min(15:2:21) = -3*pi/4;
     
     datStruct.sd_max          = 100*ones(25,1);
-    datStruct.sd_max(3)       = 2;
+    datStruct.sd_max(3)       = 0.6;
+    datStruct.sd_max(5)       = pi/4;
     datStruct.sd_max([7,11])  = pi/2;
     datStruct.sd_max([15,19]) = -0.05;
     datStruct.sd_max([17,21]) = pi/4;

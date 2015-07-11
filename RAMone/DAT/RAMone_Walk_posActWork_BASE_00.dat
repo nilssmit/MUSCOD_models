@@ -42,15 +42,15 @@ nshoot
 
 // Model stage duration start values:
 h
- 0:  1.000000 // Single stance until touchdown
+ 0:  0.500000 // Single stance until touchdown
  1:  0.000000 // Touchdown
- 2:  1.000000 // Double stance until liftoff
+ 2:  0.500000 // Double stance until liftoff
 
 // Model stage duration scale factors:
 h_sca
- 0:   0.5000000 // Single stance until touchdown
+ 0:   1.0000000 // Single stance until touchdown
  1:   0.0000000 // Touchdown
- 2:   0.5000000 // Double stance until liftoff
+ 2:   1.0000000 // Double stance until liftoff
 
 // Model stage duration lower bound:
 h_min
@@ -165,9 +165,9 @@ sd_sca(*,*)
 sd_min(*,*)
  0: -100.0000000 // x          [m]         Main body x position
  1: -100.0000000 // dx         [m/s]       Main body x velocity
- 2:   0.0000000 // y          [m]         Main body y position
+ 2:   0.2000000 // y          [m]         Main body y position
  3: -100.0000000 // dy         [m/s]       Main body y velocity
- 4: -100.0000000 // phi        [rad]       Main body pitch
+ 4:  -0.7853982 // phi        [rad]       Main body pitch
  5: -100.0000000 // dphi       [rad/s]     Main body pitch velocity
  6:  -1.5707963 // alphaL     [rad]       Left hip angle
  7: -100.0000000 // dalphaL    [rad/s]     Left hip angular velocity
@@ -193,9 +193,9 @@ sd_min(*,*)
 sd_max(*,*)
  0: 100.0000000 // x          [m]         Main body x position
  1: 100.0000000 // dx         [m/s]       Main body x velocity
- 2:   2.0000000 // y          [m]         Main body y position
+ 2:   0.6000000 // y          [m]         Main body y position
  3: 100.0000000 // dy         [m/s]       Main body y velocity
- 4: 100.0000000 // phi        [rad]       Main body pitch
+ 4:   0.7853982 // phi        [rad]       Main body pitch
  5: 100.0000000 // dphi       [rad/s]     Main body pitch velocity
  6:   1.5707963 // alphaL     [rad]       Left hip angle
  7: 100.0000000 // dalphaL    [rad/s]     Left hip angular velocity
