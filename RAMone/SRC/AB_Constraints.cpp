@@ -866,10 +866,10 @@ void convertParameters(double *p_free, double *p){
 	p[cost_fct_sel]   = p_free[cost_fct_sel_free];
 	p[v_avg]          = p_free[v_avg_free];
     p[sigma]          = p_free[sigma_free];
-	p[const_sel_free] = p_free[const_sel];
+	p[const_sel]      = p_free[const_sel_free];
 	
     p[hip_jnt_type] = 0;
-    p[leg_jnt_type] = 0;
+    p[knee_jnt_type] = 0;
 	p[g]     		= 9.81;
 	p[m1]    		= 6.54;
 	p[m2]    		= 1.56;

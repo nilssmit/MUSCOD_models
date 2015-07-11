@@ -8,7 +8,7 @@ CMAKE_MINIMUM_REQUIRED (VERSION 2.6)  # Check the version type
 
 PROJECT( "RAMone" CXX )       # Define the project name
 
-MESSAGE("MESSAGE: CMakeList File for Series and Parallel Elastic Actuation")
+MESSAGE("MESSAGE: CMakeList File for RAMone walking and running")
 MESSAGE(${PROJECT_SOURCE_DIR})
 
 LIST( APPEND CMAKE_MODULE_PATH  #Appends the two paths to the (empty) list of module paths
@@ -45,16 +45,24 @@ INCLUDE_DIRECTORIES(${EIGEN3_INCLUDE_DIR})
 # NOTE: Here you need to add all source files that are required for your
 #       optimal control problem.
 
-# Toy Problem
-ADD_LIBRARY ( RAMone_Walking
-    AB_Walking.cpp
+# RAMone walking
+ADD_LIBRARY ( AB_Walking
+    	SRC/AB_Walking.cpp
 	SRC/AB_Constraints.cpp
 	SRC/AB_Dynamics.cpp
 	)
 
+# RAMone running
+ADD_LIBRARY ( AB_Running
+    	SRC/AB_Running.cpp
+	SRC/AB_Constraints.cpp
+	SRC/AB_Dynamics.cpp
+	)
+
+
 ###############################################################
 # BUILD THE EXECUTABLES FOR THE VELOCITY STUDIES
-#ADD_EXECUTABLE ( PB_DDH_Processing
+#ADD_EXECUTABLE ( AB_DDH_Processing
 #	SRC/PB_DDH_Processing.cpp
 #	)
 

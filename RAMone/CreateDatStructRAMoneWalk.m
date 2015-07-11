@@ -157,7 +157,7 @@ function datStruct = CreateDatStructRAMoneWalk(costFunction,v_avg,sigma,const_se
                            'TalphaR     [N*m]   Right hip motor torque';
                            'TbetaL      [N*m]   Left knee motor torque';
                            'TbetaR      [N*m]   Right knee motor torque'};
-    datStruct.u_type = 2; % piecewise linear
+    datStruct.u_type = 2*ones(4,1); % piecewise linear
     datStruct.u      = u;
     datStruct.u_sca  = ones(4,1);
     

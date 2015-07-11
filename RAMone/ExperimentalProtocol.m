@@ -6,7 +6,7 @@ PathToMuscod  = '/home/yevyes/MUSCOD-II/MC2/Release/bin/muscod';
 % PathTo2DBiped   = '/home/yevyes/muscodgaitcreat/2013_04_13_SeriesParallel2DBiped/';
 % PathTo1DMonoped = '/home/yevyes/muscodgaitcreat/2013_04_30_SeriesParallel1DMonoped/';
 
-PathToAB = '/home/yevyes/ResearchCloud/Yev_TEST/muscodgaitcreat/2013_04_30_SeriesParallel1DMonoped/';
+PathToAB = '/home/yevyes/Nils/MUSCOD_models/RAMone/';
 
 %% STEP_01
 % Walking
@@ -19,35 +19,38 @@ v_avg = 0.5;
 sigma = 0.05;
 
 datStruct = CreateDatStructRAMoneWalk(1,v_avg,sigma,0); % posActWork
-save('BaseData/RAMone_Walk_posActWork_BASE_00.mat', 'datStruct');
-CreateDatFile('BaseData/RAMone_Walk_posActWork_BASE_00',datStruct)
+save([PathToAB 'RES/BaseData/RAMone_Walk_posActWork_BASE_00.mat'], 'datStruct');
+CreateDatFile([PathToAB 'RES/BaseData/RAMone_Walk_posActWork_BASE_00'],datStruct)
 %
 datStruct = CreateDatStructRAMoneWalk(2,v_avg,sigma,0); % posElWork
-save('BaseData/RAMone_Walk_posElWork_BASE_00.mat', 'datStruct');
-CreateDatFile('BaseData/RAMone_Walk_posElWork_BASE_00',datStruct)
+save([PathToAB 'RES/BaseData/RAMone_Walk_posElWork_BASE_00.mat'], 'datStruct');
+CreateDatFile([PathToAB 'RES/BaseData/RAMone_Walk_posElWork_BASE_00'],datStruct)
 %
 datStruct = CreateDatStructRAMoneWalk(3,v_avg,sigma,0); % totElLoss
-save('BaseData/RAMone_Walk_totElLoss_BASE_00.mat', 'datStruct');
-CreateDatFile('BaseData/RAMone_Walk_totElLoss_BASE_00',datStruct)
+save([PathToAB 'RES/BaseData/RAMone_Walk_totElLoss_BASE_00.mat'], 'datStruct');
+CreateDatFile([PathToAB 'RES/BaseData/RAMone_Walk_totElLoss_BASE_00'],datStruct)
 %
 datStruct = CreateDatStructRAMoneRun(1,v_avg,sigma,0); % posActWork
-save('BaseData/RAMone_Run_posActWork_BASE_00.mat', 'datStruct');
-CreateDatFile('BaseData/RAMone_Run_posActWork_BASE_00',datStruct)
+save([PathToAB 'RES/BaseData/RAMone_Run_posActWork_BASE_00.mat'], 'datStruct');
+CreateDatFile([PathToAB 'RES/BaseData/RAMone_Run_posActWork_BASE_00'],datStruct)
 %
 datStruct = CreateDatStructRAMoneRun(2,v_avg,sigma,0); % posElWork
-save('BaseData/RAMone_Run_posElWork_BASE_00.mat', 'datStruct');
-CreateDatFile('BaseData/RAMone_Run_posElWork_BASE_00',datStruct)
+save([PathToAB 'RES/BaseData/RAMone_Run_posElWork_BASE_00.mat'], 'datStruct');
+CreateDatFile([PathToAB 'RES/BaseData/RAMone_Run_posElWork_BASE_00'],datStruct)
 %
 datStruct = CreateDatStructRAMoneRun(3,v_avg,sigma,0); % totElLoss
-save('BaseData/RAMone_Run_totElLoss_BASE_00.mat', 'datStruct');
-CreateDatFile('BaseData/RAMone_Run_totElLoss_BASE_00',datStruct)
+save([PathToAB 'RES/BaseData/RAMone_Run_totElLoss_BASE_00.mat'], 'datStruct');
+CreateDatFile([PathToAB 'RES/BaseData/RAMone_Run_totElLoss_BASE_00'],datStruct)
 
 % Copy to project directory to process in Muscod
 currentPath = pwd;
-system(['cp ',pwd,'/BaseData/RAMone_*_BASE_00.dat ', PathToAB,'DAT/']);
+system(['cp ',PathToAB,'RES/BaseData/RAMone_*_BASE_00.dat ', PathToAB,'DAT/']);
 % SWITCH TO PROJECT DIRECTORY AND RUN MUSCOD THERE
+%%
 cd(PathToAB);
-[MuscodResults_01(1), cmdout] = system([PathToMuscod,' RAMone_Walk_posActWork_BASE_00']);
+%%
+[MuscodResults_01(1), cmdout] = system([PathToMuscod,' DAT/RAMone_Walk_posActWork_BASE_00']);
+%%
 [MuscodResults_01(2), cmdout] = system([PathToMuscod,' RAMone_Walk_posElWork_BASE_00']);
 [MuscodResults_01(3), cmdout] = system([PathToMuscod,' RAMone_Walk_totElLoss_BASE_00']);
 [MuscodResults_01(4), cmdout] = system([PathToMuscod,' RAMone_Run_posActWork_BASE_00']);

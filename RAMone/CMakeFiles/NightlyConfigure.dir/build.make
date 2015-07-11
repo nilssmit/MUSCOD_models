@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/yevyes/Nils/NilsToyProblem
+CMAKE_SOURCE_DIR = /home/yevyes/Nils/MUSCOD_models/RAMone
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/yevyes/Nils/NilsToyProblem
+CMAKE_BINARY_DIR = /home/yevyes/Nils/MUSCOD_models/RAMone
 
 # Utility rule file for NightlyConfigure.
 
@@ -64,6 +64,6 @@ CMakeFiles/NightlyConfigure.dir/clean:
 .PHONY : CMakeFiles/NightlyConfigure.dir/clean
 
 CMakeFiles/NightlyConfigure.dir/depend:
-	cd /home/yevyes/Nils/NilsToyProblem && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/yevyes/Nils/NilsToyProblem /home/yevyes/Nils/NilsToyProblem /home/yevyes/Nils/NilsToyProblem /home/yevyes/Nils/NilsToyProblem /home/yevyes/Nils/NilsToyProblem/CMakeFiles/NightlyConfigure.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/yevyes/Nils/MUSCOD_models/RAMone && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/yevyes/Nils/MUSCOD_models/RAMone /home/yevyes/Nils/MUSCOD_models/RAMone /home/yevyes/Nils/MUSCOD_models/RAMone /home/yevyes/Nils/MUSCOD_models/RAMone /home/yevyes/Nils/MUSCOD_models/RAMone/CMakeFiles/NightlyConfigure.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/NightlyConfigure.dir/depend
 

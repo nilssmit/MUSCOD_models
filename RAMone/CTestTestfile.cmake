@@ -1,6 +1,6 @@
 # CMake generated Testfile for 
-# Source directory: /home/yevyes/Nils/NilsToyProblem
-# Build directory: /home/yevyes/Nils/NilsToyProblem
+# Source directory: /home/yevyes/Nils/MUSCOD_models/RAMone
+# Build directory: /home/yevyes/Nils/MUSCOD_models/RAMone
 # 
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.

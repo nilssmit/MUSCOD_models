@@ -14,7 +14,7 @@
 #define AB_DDH_CONSTRAINTS_H_
 
 // Create the instance of the model object
-static PB_Dynamics syst;
+static AB_Dynamics syst;
 
 /*********************************
  * FlowMaps
@@ -132,7 +132,7 @@ void mfcn_COT(double *ts, double *sd, double *sa, double *u, double *p, double *
 /*********************************
  * Output Functions
  *********************************/
-static const char *figureview_file_name = "PB_DDH_MOTION.fv";
+static const char *figureview_file_name = "AB_DDH_MOTION.fv";
 void figureview_output
 (
 		long   *imos,      ///< index of model stage (I)
@@ -208,7 +208,7 @@ void plot_output(
 // PFree
 #define  NPFree 4 /* Number of adjustable system parameters */
 enum pFreeNames { cost_fct_sel_free, v_avg_free,
-	              sigma, const_sel_free
+	              sigma_free, const_sel_free
 };
 void convertParameters(double *p_free, double *p);
 void computeConstraints(int const_selFLAG, int offset, double *res);
