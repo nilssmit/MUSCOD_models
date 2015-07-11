@@ -1,5 +1,5 @@
 #################
-## cmakefiles
+## All files that are put out after a make call
 #################
 
 *.so

@@ -697,7 +697,6 @@ void AB_Dynamics::ComputeJointForces(){
 				              pVec(bbeta2) *(yVec(dubetaL) - yVec(dbetaL));
 		T_spring_betaR = pVec(kbeta2)*(yVec(ubetaR)  - yVec(betaR)) +
 				              pVec(bbeta2) *(yVec(dubetaR) - yVec(dbetaR));
-        
 		tau(qbetaL) = T_spring_betaL + 0;
 		tau(qbetaR) = T_spring_betaR + 0;
 	}
