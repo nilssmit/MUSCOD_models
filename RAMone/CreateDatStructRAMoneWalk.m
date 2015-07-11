@@ -12,11 +12,10 @@
 % CreateDatFile('Data/HOPPING_1D_SL_BASE',CreateDatStructMonoped1D('SEA'))
 function datStruct = CreateDatStructRAMoneWalk(costFunction,v_avg,sigma,const_sel)
     % First, define all properties that only depend on the gait type:
-    % (do we need to initialize in a feasible configuration?)
     sd = zeros(25,1);
     sd(1) = 1;      % x
-    sd(2) = 0.2;    % dx
-    sd(3) = 1;      % y
+    sd(2) = v_avg;  % dx
+    sd(3) = 0.4;    % y
     sd(4) = 0;      % dy
     sd(5) = 0;      % phi
     sd(6) = 0;      % dphi
@@ -24,17 +23,17 @@ function datStruct = CreateDatStructRAMoneWalk(costFunction,v_avg,sigma,const_se
     sd(8) = 0;      % dalphaL
     sd(9) = 0;      % ualphaL
     sd(10)= 0;      % dualphaL
-    sd(11)= 0;      % alphaR
+    sd(11)= pi/4;   % alphaR
     sd(12)= 0;      % dalphaR
-    sd(13)= 0;      % ualphaR
+    sd(13)= pi/4;   % ualphaR
     sd(14)= 0;      % dualphaR
-    sd(15)= 0;      % betaL
+    sd(15)= -pi/4;  % betaL
     sd(16)= 0;      % dbetaL
-    sd(17)= 0;      % ubetaL
+    sd(17)= -pi/4;  % ubetaL
     sd(18)= 0;      % dubetaL
-    sd(19)= 0;      % betaR
+    sd(19)= -pi/4;  % betaR
     sd(20)= 0;      % dbetaR
-    sd(21)= 0;      % ubetaR
+    sd(21)= -pi/4;  % ubetaR
     sd(22)= 0;      % dubetaR
     sd(23)= 0;      % posActWork
     sd(24)= 0;      % posElWork
@@ -112,7 +111,7 @@ function datStruct = CreateDatStructRAMoneWalk(costFunction,v_avg,sigma,const_se
     datStruct.sd          = sd;
     datStruct.sd_sca      = ones(25,1);
     
-    % States are unlimited apart from the body height (which is bounded by [0,10])
+    % States are unlimited apart from the body height (which is bounded by [0,2])
     % knee joints (which are bounded by [-3*pi/4, -0.05]), knee actuators 
     % ([-3*pi/4, pi/4]), and hip joints ([-pi/2, pi/2])
     datStruct.sd_min          = -100*ones(25,1);
@@ -121,7 +120,7 @@ function datStruct = CreateDatStructRAMoneWalk(costFunction,v_avg,sigma,const_se
     datStruct.sd_min(15:2:21) = -3*pi/4;
     
     datStruct.sd_max          = 100*ones(25,1);
-    datStruct.sd_max(3)       = 10;
+    datStruct.sd_max(3)       = 2;
     datStruct.sd_max([7,11])  = pi/2;
     datStruct.sd_max([15,19]) = -0.05;
     datStruct.sd_max([17,21]) = pi/4;

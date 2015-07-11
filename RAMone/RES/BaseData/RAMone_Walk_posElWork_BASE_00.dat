@@ -108,8 +108,8 @@ s_spec
 // States at the beginning of model stage 0:
 sd(0,S)
  0:   1.0000000 // x          [m]         Main body x position
- 1:   0.2000000 // dx         [m/s]       Main body x velocity
- 2:   1.0000000 // y          [m]         Main body y position
+ 1:   0.5000000 // dx         [m/s]       Main body x velocity
+ 2:   0.4000000 // y          [m]         Main body y position
  3:   0.0000000 // dy         [m/s]       Main body y velocity
  4:   0.0000000 // phi        [rad]       Main body pitch
  5:   0.0000000 // dphi       [rad/s]     Main body pitch velocity
@@ -117,17 +117,17 @@ sd(0,S)
  7:   0.0000000 // dalphaL    [rad/s]     Left hip angular velocity
  8:   0.0000000 // ualphaL    [rad]       Left hip actuator angle
  9:   0.0000000 // dualphaL   [rad/s]     Left hip actuator angular velocity
-10:   0.0000000 // alphaR     [rad]       Right hip angle
+10:   0.7853982 // alphaR     [rad]       Right hip angle
 11:   0.0000000 // dalphaR    [rad/s]     Right hip angular velocity
-12:   0.0000000 // ualphaR    [rad]       Right hip actuator angle
+12:   0.7853982 // ualphaR    [rad]       Right hip actuator angle
 13:   0.0000000 // dualphaR   [rad/s]     Right hip actuator angular velocity
-14:   0.0000000 // betaL      [rad]       Left knee angle
+14:  -0.7853982 // betaL      [rad]       Left knee angle
 15:   0.0000000 // dbetaL     [rad/s]     Left knee angular velocity
-16:   0.0000000 // ubetaL     [rad]       Left knee actuator angle
+16:  -0.7853982 // ubetaL     [rad]       Left knee actuator angle
 17:   0.0000000 // dubetaL    [rad/s]     Left knee actuator angular velocity
-18:   0.0000000 // betaR      [rad]       Right knee angle
+18:  -0.7853982 // betaR      [rad]       Right knee angle
 19:   0.0000000 // dbetaR     [rad/s]     Right knee angular velocity
-20:   0.0000000 // ubetaR     [rad]       Right knee actuator angle
+20:  -0.7853982 // ubetaR     [rad]       Right knee actuator angle
 21:   0.0000000 // dubetaR    [rad/s]     Right knee actuator angular velocity
 22:   0.0000000 // posActWork [J]         Positive actuator work (must initially remain 0)
 23:   0.0000000 // posElWork  [J]         Positive electrical work (must initially remain 0)
@@ -193,7 +193,7 @@ sd_min(*,*)
 sd_max(*,*)
  0: 100.0000000 // x          [m]         Main body x position
  1: 100.0000000 // dx         [m/s]       Main body x velocity
- 2:  10.0000000 // y          [m]         Main body y position
+ 2:   2.0000000 // y          [m]         Main body y position
  3: 100.0000000 // dy         [m/s]       Main body y velocity
  4: 100.0000000 // phi        [rad]       Main body pitch
  5: 100.0000000 // dphi       [rad/s]     Main body pitch velocity

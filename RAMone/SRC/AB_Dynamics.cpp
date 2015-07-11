@@ -682,17 +682,21 @@ void AB_Dynamics::ComputeJointForces(){
 		tau(qbetaL) = T_spring_betaL + uVec(TbetaL);
 		tau(qbetaR) = T_spring_betaR + uVec(TbetaR);
 	} else { // Serial spring in the leg
-		b_betaL = Sigmoid(yVec(dubetaL)-yVec(dbetaL),pVec(sigma))*((pVec(bbeta1) - pVec(bbeta2)) *
-				  Sigmoid(pVec(betaSmall)+yVec(dubetaL)-yVec(betaL),pVec(sigma)) + pVec(bbeta2)) + 
-				  Sigmoid(yVec(dbetaL)-yVec(dubetaL),pVec(sigma))*pVec(bbeta2);
-		b_betaR = Sigmoid(yVec(dubetaR)-yVec(dbetaR),pVec(sigma))*((pVec(bbeta1) - pVec(bbeta2)) *
-				  Sigmoid(pVec(betaSmall)+yVec(dubetaR)-yVec(betaR),pVec(sigma)) + pVec(bbeta2)) + 
-				  Sigmoid(yVec(dbetaR)-yVec(dubetaR),pVec(sigma))*pVec(bbeta2);
-	
-		T_spring_betaL = pVec(kbeta1)*(yVec(ubetaL) - yVec(betaL)) + Logistic(yVec(betaL) - yVec(ubetaL) - pVec(betaSmall),pVec(sigma))*(pVec(kbeta1) - pVec(kbeta2)) +
-			              b_betaL *(yVec(dubetaL) - yVec(dbetaL));
-		T_spring_betaR = pVec(kbeta1)*(yVec(ubetaR) - yVec(betaR)) + Logistic(yVec(betaR) - yVec(ubetaR) - pVec(betaSmall),pVec(sigma))*(pVec(kbeta1) - pVec(kbeta2)) +
-			              b_betaR *(yVec(dubetaR) - yVec(dbetaR));
+// 		b_betaL = Sigmoid(yVec(dubetaL)-yVec(dbetaL),pVec(sigma))*((pVec(bbeta1) - pVec(bbeta2)) *
+// 				  Sigmoid(pVec(betaSmall)+yVec(dubetaL)-yVec(betaL),pVec(sigma)) + pVec(bbeta2)) + 
+// 				  Sigmoid(yVec(dbetaL)-yVec(dubetaL),pVec(sigma))*pVec(bbeta2);
+// 		b_betaR = Sigmoid(yVec(dubetaR)-yVec(dbetaR),pVec(sigma))*((pVec(bbeta1) - pVec(bbeta2)) *
+// 				  Sigmoid(pVec(betaSmall)+yVec(dubetaR)-yVec(betaR),pVec(sigma)) + pVec(bbeta2)) + 
+// 				  Sigmoid(yVec(dbetaR)-yVec(dubetaR),pVec(sigma))*pVec(bbeta2);
+// 	
+// 		T_spring_betaL = pVec(kbeta1)*(yVec(ubetaL) - yVec(betaL)) + Logistic(yVec(betaL) - yVec(ubetaL) - pVec(betaSmall),pVec(sigma))*(pVec(kbeta1) - pVec(kbeta2)) +
+// 			              b_betaL *(yVec(dubetaL) - yVec(dbetaL));
+// 		T_spring_betaR = pVec(kbeta1)*(yVec(ubetaR) - yVec(betaR)) + Logistic(yVec(betaR) - yVec(ubetaR) - pVec(betaSmall),pVec(sigma))*(pVec(kbeta1) - pVec(kbeta2)) +
+// 			              b_betaL *(yVec(dubetaR) - yVec(dbetaR));
+        T_spring_betaL = pVec(kbeta2)*(yVec(ubetaL)  - yVec(betaL)) +
+				              pVec(bbeta2) *(yVec(dubetaL) - yVec(dbetaL));
+		T_spring_betaR = pVec(kbeta2)*(yVec(ubetaR)  - yVec(betaR)) +
+				              pVec(bbeta2) *(yVec(dubetaR) - yVec(dbetaR));
 		tau(qbetaL) = T_spring_betaL + 0;
 		tau(qbetaR) = T_spring_betaR + 0;
 	}
