@@ -4,8 +4,8 @@
 
 
 # Configuration directories and files
-SourceDirectory: /home/yevyes/Nils/NilsToyProblem
-BuildDirectory: /home/yevyes/Nils/NilsToyProblem
+SourceDirectory: /home/yevyes/Nils/MUSCOD_models/RAMone
+BuildDirectory: /home/yevyes/Nils/MUSCOD_models/RAMone
 
 # Where to place the cost data store
 CostDataFile: 
@@ -33,7 +33,7 @@ ScpCommand: /usr/bin/scp
 NightlyStartTime: 21:00:00 UTC
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/usr/bin/cmake" "/home/yevyes/Nils/NilsToyProblem"
+ConfigureCommand: "/usr/bin/cmake" "/home/yevyes/Nils/MUSCOD_models/RAMone"
 MakeCommand: /usr/bin/make -i
 DefaultCTestConfigurationType: Release
 
@@ -48,7 +48,7 @@ SVNOptions:
 SVNUpdateOptions: 
 
 # Git options
-GITCommand: GITCOMMAND-NOTFOUND
+GITCommand: /usr/bin/git
 GITUpdateOptions: 
 GITUpdateCustom: 
 

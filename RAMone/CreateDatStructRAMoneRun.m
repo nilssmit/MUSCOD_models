@@ -10,7 +10,7 @@
 % Possible uses:
 % CreateDatFile('Data/HOPPING_1D_PL_BASE',CreateDatStructMonoped1D('PEA'))
 % CreateDatFile('Data/HOPPING_1D_SL_BASE',CreateDatStructMonoped1D('SEA'))
-function datStruct = CreateDatStructRAMoneRun(costFunction,v_avg)
+function datStruct = CreateDatStructRAMoneRun(costFunction,v_avg,sigma,const_sel)
     % First, define all properties that only depend on the gait type:
     % (do we need to initialize in a feasible configuration?)
     sd = zeros(25,1);
@@ -41,19 +41,10 @@ function datStruct = CreateDatStructRAMoneRun(costFunction,v_avg)
     sd(25)= 0;      % totElLoss
     
     p = zeros(4,1);
-    p(1) = 0;      % Cost function selection index (cost_fct_sel) [1; 2; 3]
+    p(1) = costFunction;      % Cost function selection index (cost_fct_sel) [1; 2; 3]
     p(2) = v_avg;  % Average speed (v_avg) [m/s]
-    p(3) = 0.05;   % Knee spring regularization constant (sigma) [rad]
-    p(4) = 7;      % Constraint selection index (const_sel) [binary flags]
-    
-    switch lower(costFunction)
-        case 'posactwork'
-            p(1) = 1;
-        case 'poselwork'
-            p(1) = 2;
-        case 'totelloss'
-            p(1) = 3;
-    end
+    p(3) = sigma;   % Knee spring regularization constant (sigma) [rad]
+    p(4) = const_sel;      % Constraint selection index (const_sel) [binary flags]
     
     u  = zeros(4,1);
     h  = [1;0;1];  

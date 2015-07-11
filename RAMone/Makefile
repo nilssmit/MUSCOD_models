@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/yevyes/Nils/NilsToyProblem
+CMAKE_SOURCE_DIR = /home/yevyes/Nils/MUSCOD_models/RAMone
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/yevyes/Nils/NilsToyProblem
+CMAKE_BINARY_DIR = /home/yevyes/Nils/MUSCOD_models/RAMone
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -82,6 +82,16 @@ install/local: preinstall
 install/local/fast: install/local
 .PHONY : install/local/fast
 
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: install/strip
+.PHONY : install/strip/fast
+
 # Special rule for the target list_install_components
 list_install_components:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
@@ -113,9 +123,9 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/yevyes/Nils/NilsToyProblem/CMakeFiles /home/yevyes/Nils/NilsToyProblem/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yevyes/Nils/MUSCOD_models/RAMone/CMakeFiles /home/yevyes/Nils/MUSCOD_models/RAMone/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/yevyes/Nils/NilsToyProblem/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yevyes/Nils/MUSCOD_models/RAMone/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -143,30 +153,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named 1DHopper
+# Target rules for targets named AB_Running
 
 # Build rule for target.
-1DHopper: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 1DHopper
-.PHONY : 1DHopper
+AB_Running: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 AB_Running
+.PHONY : AB_Running
 
 # fast build rule for target.
-1DHopper/fast:
-	$(MAKE) -f CMakeFiles/1DHopper.dir/build.make CMakeFiles/1DHopper.dir/build
-.PHONY : 1DHopper/fast
+AB_Running/fast:
+	$(MAKE) -f CMakeFiles/AB_Running.dir/build.make CMakeFiles/AB_Running.dir/build
+.PHONY : AB_Running/fast
 
 #=============================================================================
-# Target rules for targets named 1DHopperNonPer
+# Target rules for targets named AB_Walking
 
 # Build rule for target.
-1DHopperNonPer: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 1DHopperNonPer
-.PHONY : 1DHopperNonPer
+AB_Walking: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 AB_Walking
+.PHONY : AB_Walking
 
 # fast build rule for target.
-1DHopperNonPer/fast:
-	$(MAKE) -f CMakeFiles/1DHopperNonPer.dir/build.make CMakeFiles/1DHopperNonPer.dir/build
-.PHONY : 1DHopperNonPer/fast
+AB_Walking/fast:
+	$(MAKE) -f CMakeFiles/AB_Walking.dir/build.make CMakeFiles/AB_Walking.dir/build
+.PHONY : AB_Walking/fast
 
 #=============================================================================
 # Target rules for targets named Continuous
@@ -532,223 +542,107 @@ NightlyUpdate/fast:
 	$(MAKE) -f CMakeFiles/NightlyUpdate.dir/build.make CMakeFiles/NightlyUpdate.dir/build
 .PHONY : NightlyUpdate/fast
 
-#=============================================================================
-# Target rules for targets named ToyProblem
-
-# Build rule for target.
-ToyProblem: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ToyProblem
-.PHONY : ToyProblem
-
-# fast build rule for target.
-ToyProblem/fast:
-	$(MAKE) -f CMakeFiles/ToyProblem.dir/build.make CMakeFiles/ToyProblem.dir/build
-.PHONY : ToyProblem/fast
-
-#=============================================================================
-# Target rules for targets named ToyProblemNonPeriodic
-
-# Build rule for target.
-ToyProblemNonPeriodic: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ToyProblemNonPeriodic
-.PHONY : ToyProblemNonPeriodic
-
-# fast build rule for target.
-ToyProblemNonPeriodic/fast:
-	$(MAKE) -f CMakeFiles/ToyProblemNonPeriodic.dir/build.make CMakeFiles/ToyProblemNonPeriodic.dir/build
-.PHONY : ToyProblemNonPeriodic/fast
-
-SRC/1DHopper.o: SRC/1DHopper.cpp.o
-.PHONY : SRC/1DHopper.o
+SRC/AB_Constraints.o: SRC/AB_Constraints.cpp.o
+.PHONY : SRC/AB_Constraints.o
 
 # target to build an object file
-SRC/1DHopper.cpp.o:
-	$(MAKE) -f CMakeFiles/1DHopper.dir/build.make CMakeFiles/1DHopper.dir/SRC/1DHopper.cpp.o
-.PHONY : SRC/1DHopper.cpp.o
+SRC/AB_Constraints.cpp.o:
+	$(MAKE) -f CMakeFiles/AB_Running.dir/build.make CMakeFiles/AB_Running.dir/SRC/AB_Constraints.cpp.o
+	$(MAKE) -f CMakeFiles/AB_Walking.dir/build.make CMakeFiles/AB_Walking.dir/SRC/AB_Constraints.cpp.o
+.PHONY : SRC/AB_Constraints.cpp.o
 
-SRC/1DHopper.i: SRC/1DHopper.cpp.i
-.PHONY : SRC/1DHopper.i
+SRC/AB_Constraints.i: SRC/AB_Constraints.cpp.i
+.PHONY : SRC/AB_Constraints.i
 
 # target to preprocess a source file
-SRC/1DHopper.cpp.i:
-	$(MAKE) -f CMakeFiles/1DHopper.dir/build.make CMakeFiles/1DHopper.dir/SRC/1DHopper.cpp.i
-.PHONY : SRC/1DHopper.cpp.i
+SRC/AB_Constraints.cpp.i:
+	$(MAKE) -f CMakeFiles/AB_Running.dir/build.make CMakeFiles/AB_Running.dir/SRC/AB_Constraints.cpp.i
+	$(MAKE) -f CMakeFiles/AB_Walking.dir/build.make CMakeFiles/AB_Walking.dir/SRC/AB_Constraints.cpp.i
+.PHONY : SRC/AB_Constraints.cpp.i
 
-SRC/1DHopper.s: SRC/1DHopper.cpp.s
-.PHONY : SRC/1DHopper.s
+SRC/AB_Constraints.s: SRC/AB_Constraints.cpp.s
+.PHONY : SRC/AB_Constraints.s
 
 # target to generate assembly for a file
-SRC/1DHopper.cpp.s:
-	$(MAKE) -f CMakeFiles/1DHopper.dir/build.make CMakeFiles/1DHopper.dir/SRC/1DHopper.cpp.s
-.PHONY : SRC/1DHopper.cpp.s
+SRC/AB_Constraints.cpp.s:
+	$(MAKE) -f CMakeFiles/AB_Running.dir/build.make CMakeFiles/AB_Running.dir/SRC/AB_Constraints.cpp.s
+	$(MAKE) -f CMakeFiles/AB_Walking.dir/build.make CMakeFiles/AB_Walking.dir/SRC/AB_Constraints.cpp.s
+.PHONY : SRC/AB_Constraints.cpp.s
 
-SRC/1DHopperNonPer.o: SRC/1DHopperNonPer.cpp.o
-.PHONY : SRC/1DHopperNonPer.o
+SRC/AB_Dynamics.o: SRC/AB_Dynamics.cpp.o
+.PHONY : SRC/AB_Dynamics.o
 
 # target to build an object file
-SRC/1DHopperNonPer.cpp.o:
-	$(MAKE) -f CMakeFiles/1DHopperNonPer.dir/build.make CMakeFiles/1DHopperNonPer.dir/SRC/1DHopperNonPer.cpp.o
-.PHONY : SRC/1DHopperNonPer.cpp.o
+SRC/AB_Dynamics.cpp.o:
+	$(MAKE) -f CMakeFiles/AB_Running.dir/build.make CMakeFiles/AB_Running.dir/SRC/AB_Dynamics.cpp.o
+	$(MAKE) -f CMakeFiles/AB_Walking.dir/build.make CMakeFiles/AB_Walking.dir/SRC/AB_Dynamics.cpp.o
+.PHONY : SRC/AB_Dynamics.cpp.o
 
-SRC/1DHopperNonPer.i: SRC/1DHopperNonPer.cpp.i
-.PHONY : SRC/1DHopperNonPer.i
+SRC/AB_Dynamics.i: SRC/AB_Dynamics.cpp.i
+.PHONY : SRC/AB_Dynamics.i
 
 # target to preprocess a source file
-SRC/1DHopperNonPer.cpp.i:
-	$(MAKE) -f CMakeFiles/1DHopperNonPer.dir/build.make CMakeFiles/1DHopperNonPer.dir/SRC/1DHopperNonPer.cpp.i
-.PHONY : SRC/1DHopperNonPer.cpp.i
+SRC/AB_Dynamics.cpp.i:
+	$(MAKE) -f CMakeFiles/AB_Running.dir/build.make CMakeFiles/AB_Running.dir/SRC/AB_Dynamics.cpp.i
+	$(MAKE) -f CMakeFiles/AB_Walking.dir/build.make CMakeFiles/AB_Walking.dir/SRC/AB_Dynamics.cpp.i
+.PHONY : SRC/AB_Dynamics.cpp.i
 
-SRC/1DHopperNonPer.s: SRC/1DHopperNonPer.cpp.s
-.PHONY : SRC/1DHopperNonPer.s
+SRC/AB_Dynamics.s: SRC/AB_Dynamics.cpp.s
+.PHONY : SRC/AB_Dynamics.s
 
 # target to generate assembly for a file
-SRC/1DHopperNonPer.cpp.s:
-	$(MAKE) -f CMakeFiles/1DHopperNonPer.dir/build.make CMakeFiles/1DHopperNonPer.dir/SRC/1DHopperNonPer.cpp.s
-.PHONY : SRC/1DHopperNonPer.cpp.s
+SRC/AB_Dynamics.cpp.s:
+	$(MAKE) -f CMakeFiles/AB_Running.dir/build.make CMakeFiles/AB_Running.dir/SRC/AB_Dynamics.cpp.s
+	$(MAKE) -f CMakeFiles/AB_Walking.dir/build.make CMakeFiles/AB_Walking.dir/SRC/AB_Dynamics.cpp.s
+.PHONY : SRC/AB_Dynamics.cpp.s
 
-SRC/ConstraintsCostsDynamics.o: SRC/ConstraintsCostsDynamics.cpp.o
-.PHONY : SRC/ConstraintsCostsDynamics.o
+SRC/AB_Running.o: SRC/AB_Running.cpp.o
+.PHONY : SRC/AB_Running.o
 
 # target to build an object file
-SRC/ConstraintsCostsDynamics.cpp.o:
-	$(MAKE) -f CMakeFiles/ToyProblem.dir/build.make CMakeFiles/ToyProblem.dir/SRC/ConstraintsCostsDynamics.cpp.o
-.PHONY : SRC/ConstraintsCostsDynamics.cpp.o
+SRC/AB_Running.cpp.o:
+	$(MAKE) -f CMakeFiles/AB_Running.dir/build.make CMakeFiles/AB_Running.dir/SRC/AB_Running.cpp.o
+.PHONY : SRC/AB_Running.cpp.o
 
-SRC/ConstraintsCostsDynamics.i: SRC/ConstraintsCostsDynamics.cpp.i
-.PHONY : SRC/ConstraintsCostsDynamics.i
+SRC/AB_Running.i: SRC/AB_Running.cpp.i
+.PHONY : SRC/AB_Running.i
 
 # target to preprocess a source file
-SRC/ConstraintsCostsDynamics.cpp.i:
-	$(MAKE) -f CMakeFiles/ToyProblem.dir/build.make CMakeFiles/ToyProblem.dir/SRC/ConstraintsCostsDynamics.cpp.i
-.PHONY : SRC/ConstraintsCostsDynamics.cpp.i
+SRC/AB_Running.cpp.i:
+	$(MAKE) -f CMakeFiles/AB_Running.dir/build.make CMakeFiles/AB_Running.dir/SRC/AB_Running.cpp.i
+.PHONY : SRC/AB_Running.cpp.i
 
-SRC/ConstraintsCostsDynamics.s: SRC/ConstraintsCostsDynamics.cpp.s
-.PHONY : SRC/ConstraintsCostsDynamics.s
+SRC/AB_Running.s: SRC/AB_Running.cpp.s
+.PHONY : SRC/AB_Running.s
 
 # target to generate assembly for a file
-SRC/ConstraintsCostsDynamics.cpp.s:
-	$(MAKE) -f CMakeFiles/ToyProblem.dir/build.make CMakeFiles/ToyProblem.dir/SRC/ConstraintsCostsDynamics.cpp.s
-.PHONY : SRC/ConstraintsCostsDynamics.cpp.s
+SRC/AB_Running.cpp.s:
+	$(MAKE) -f CMakeFiles/AB_Running.dir/build.make CMakeFiles/AB_Running.dir/SRC/AB_Running.cpp.s
+.PHONY : SRC/AB_Running.cpp.s
 
-SRC/ConstraintsCostsDynamics1DHopper.o: SRC/ConstraintsCostsDynamics1DHopper.cpp.o
-.PHONY : SRC/ConstraintsCostsDynamics1DHopper.o
+SRC/AB_Walking.o: SRC/AB_Walking.cpp.o
+.PHONY : SRC/AB_Walking.o
 
 # target to build an object file
-SRC/ConstraintsCostsDynamics1DHopper.cpp.o:
-	$(MAKE) -f CMakeFiles/1DHopper.dir/build.make CMakeFiles/1DHopper.dir/SRC/ConstraintsCostsDynamics1DHopper.cpp.o
-.PHONY : SRC/ConstraintsCostsDynamics1DHopper.cpp.o
+SRC/AB_Walking.cpp.o:
+	$(MAKE) -f CMakeFiles/AB_Walking.dir/build.make CMakeFiles/AB_Walking.dir/SRC/AB_Walking.cpp.o
+.PHONY : SRC/AB_Walking.cpp.o
 
-SRC/ConstraintsCostsDynamics1DHopper.i: SRC/ConstraintsCostsDynamics1DHopper.cpp.i
-.PHONY : SRC/ConstraintsCostsDynamics1DHopper.i
-
-# target to preprocess a source file
-SRC/ConstraintsCostsDynamics1DHopper.cpp.i:
-	$(MAKE) -f CMakeFiles/1DHopper.dir/build.make CMakeFiles/1DHopper.dir/SRC/ConstraintsCostsDynamics1DHopper.cpp.i
-.PHONY : SRC/ConstraintsCostsDynamics1DHopper.cpp.i
-
-SRC/ConstraintsCostsDynamics1DHopper.s: SRC/ConstraintsCostsDynamics1DHopper.cpp.s
-.PHONY : SRC/ConstraintsCostsDynamics1DHopper.s
-
-# target to generate assembly for a file
-SRC/ConstraintsCostsDynamics1DHopper.cpp.s:
-	$(MAKE) -f CMakeFiles/1DHopper.dir/build.make CMakeFiles/1DHopper.dir/SRC/ConstraintsCostsDynamics1DHopper.cpp.s
-.PHONY : SRC/ConstraintsCostsDynamics1DHopper.cpp.s
-
-SRC/ConstraintsCostsDynamics1DHopperNonPer.o: SRC/ConstraintsCostsDynamics1DHopperNonPer.cpp.o
-.PHONY : SRC/ConstraintsCostsDynamics1DHopperNonPer.o
-
-# target to build an object file
-SRC/ConstraintsCostsDynamics1DHopperNonPer.cpp.o:
-	$(MAKE) -f CMakeFiles/1DHopperNonPer.dir/build.make CMakeFiles/1DHopperNonPer.dir/SRC/ConstraintsCostsDynamics1DHopperNonPer.cpp.o
-.PHONY : SRC/ConstraintsCostsDynamics1DHopperNonPer.cpp.o
-
-SRC/ConstraintsCostsDynamics1DHopperNonPer.i: SRC/ConstraintsCostsDynamics1DHopperNonPer.cpp.i
-.PHONY : SRC/ConstraintsCostsDynamics1DHopperNonPer.i
+SRC/AB_Walking.i: SRC/AB_Walking.cpp.i
+.PHONY : SRC/AB_Walking.i
 
 # target to preprocess a source file
-SRC/ConstraintsCostsDynamics1DHopperNonPer.cpp.i:
-	$(MAKE) -f CMakeFiles/1DHopperNonPer.dir/build.make CMakeFiles/1DHopperNonPer.dir/SRC/ConstraintsCostsDynamics1DHopperNonPer.cpp.i
-.PHONY : SRC/ConstraintsCostsDynamics1DHopperNonPer.cpp.i
+SRC/AB_Walking.cpp.i:
+	$(MAKE) -f CMakeFiles/AB_Walking.dir/build.make CMakeFiles/AB_Walking.dir/SRC/AB_Walking.cpp.i
+.PHONY : SRC/AB_Walking.cpp.i
 
-SRC/ConstraintsCostsDynamics1DHopperNonPer.s: SRC/ConstraintsCostsDynamics1DHopperNonPer.cpp.s
-.PHONY : SRC/ConstraintsCostsDynamics1DHopperNonPer.s
-
-# target to generate assembly for a file
-SRC/ConstraintsCostsDynamics1DHopperNonPer.cpp.s:
-	$(MAKE) -f CMakeFiles/1DHopperNonPer.dir/build.make CMakeFiles/1DHopperNonPer.dir/SRC/ConstraintsCostsDynamics1DHopperNonPer.cpp.s
-.PHONY : SRC/ConstraintsCostsDynamics1DHopperNonPer.cpp.s
-
-SRC/ConstraintsCostsDynamicsNonPeriodic.o: SRC/ConstraintsCostsDynamicsNonPeriodic.cpp.o
-.PHONY : SRC/ConstraintsCostsDynamicsNonPeriodic.o
-
-# target to build an object file
-SRC/ConstraintsCostsDynamicsNonPeriodic.cpp.o:
-	$(MAKE) -f CMakeFiles/ToyProblemNonPeriodic.dir/build.make CMakeFiles/ToyProblemNonPeriodic.dir/SRC/ConstraintsCostsDynamicsNonPeriodic.cpp.o
-.PHONY : SRC/ConstraintsCostsDynamicsNonPeriodic.cpp.o
-
-SRC/ConstraintsCostsDynamicsNonPeriodic.i: SRC/ConstraintsCostsDynamicsNonPeriodic.cpp.i
-.PHONY : SRC/ConstraintsCostsDynamicsNonPeriodic.i
-
-# target to preprocess a source file
-SRC/ConstraintsCostsDynamicsNonPeriodic.cpp.i:
-	$(MAKE) -f CMakeFiles/ToyProblemNonPeriodic.dir/build.make CMakeFiles/ToyProblemNonPeriodic.dir/SRC/ConstraintsCostsDynamicsNonPeriodic.cpp.i
-.PHONY : SRC/ConstraintsCostsDynamicsNonPeriodic.cpp.i
-
-SRC/ConstraintsCostsDynamicsNonPeriodic.s: SRC/ConstraintsCostsDynamicsNonPeriodic.cpp.s
-.PHONY : SRC/ConstraintsCostsDynamicsNonPeriodic.s
+SRC/AB_Walking.s: SRC/AB_Walking.cpp.s
+.PHONY : SRC/AB_Walking.s
 
 # target to generate assembly for a file
-SRC/ConstraintsCostsDynamicsNonPeriodic.cpp.s:
-	$(MAKE) -f CMakeFiles/ToyProblemNonPeriodic.dir/build.make CMakeFiles/ToyProblemNonPeriodic.dir/SRC/ConstraintsCostsDynamicsNonPeriodic.cpp.s
-.PHONY : SRC/ConstraintsCostsDynamicsNonPeriodic.cpp.s
-
-SRC/ToyProblem.o: SRC/ToyProblem.cpp.o
-.PHONY : SRC/ToyProblem.o
-
-# target to build an object file
-SRC/ToyProblem.cpp.o:
-	$(MAKE) -f CMakeFiles/ToyProblem.dir/build.make CMakeFiles/ToyProblem.dir/SRC/ToyProblem.cpp.o
-.PHONY : SRC/ToyProblem.cpp.o
-
-SRC/ToyProblem.i: SRC/ToyProblem.cpp.i
-.PHONY : SRC/ToyProblem.i
-
-# target to preprocess a source file
-SRC/ToyProblem.cpp.i:
-	$(MAKE) -f CMakeFiles/ToyProblem.dir/build.make CMakeFiles/ToyProblem.dir/SRC/ToyProblem.cpp.i
-.PHONY : SRC/ToyProblem.cpp.i
-
-SRC/ToyProblem.s: SRC/ToyProblem.cpp.s
-.PHONY : SRC/ToyProblem.s
-
-# target to generate assembly for a file
-SRC/ToyProblem.cpp.s:
-	$(MAKE) -f CMakeFiles/ToyProblem.dir/build.make CMakeFiles/ToyProblem.dir/SRC/ToyProblem.cpp.s
-.PHONY : SRC/ToyProblem.cpp.s
-
-SRC/ToyProblemNonPeriodic.o: SRC/ToyProblemNonPeriodic.cpp.o
-.PHONY : SRC/ToyProblemNonPeriodic.o
-
-# target to build an object file
-SRC/ToyProblemNonPeriodic.cpp.o:
-	$(MAKE) -f CMakeFiles/ToyProblemNonPeriodic.dir/build.make CMakeFiles/ToyProblemNonPeriodic.dir/SRC/ToyProblemNonPeriodic.cpp.o
-.PHONY : SRC/ToyProblemNonPeriodic.cpp.o
-
-SRC/ToyProblemNonPeriodic.i: SRC/ToyProblemNonPeriodic.cpp.i
-.PHONY : SRC/ToyProblemNonPeriodic.i
-
-# target to preprocess a source file
-SRC/ToyProblemNonPeriodic.cpp.i:
-	$(MAKE) -f CMakeFiles/ToyProblemNonPeriodic.dir/build.make CMakeFiles/ToyProblemNonPeriodic.dir/SRC/ToyProblemNonPeriodic.cpp.i
-.PHONY : SRC/ToyProblemNonPeriodic.cpp.i
-
-SRC/ToyProblemNonPeriodic.s: SRC/ToyProblemNonPeriodic.cpp.s
-.PHONY : SRC/ToyProblemNonPeriodic.s
-
-# target to generate assembly for a file
-SRC/ToyProblemNonPeriodic.cpp.s:
-	$(MAKE) -f CMakeFiles/ToyProblemNonPeriodic.dir/build.make CMakeFiles/ToyProblemNonPeriodic.dir/SRC/ToyProblemNonPeriodic.cpp.s
-.PHONY : SRC/ToyProblemNonPeriodic.cpp.s
+SRC/AB_Walking.cpp.s:
+	$(MAKE) -f CMakeFiles/AB_Walking.dir/build.make CMakeFiles/AB_Walking.dir/SRC/AB_Walking.cpp.s
+.PHONY : SRC/AB_Walking.cpp.s
 
 # Help Target
 help:
@@ -756,8 +650,8 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... 1DHopper"
-	@echo "... 1DHopperNonPer"
+	@echo "... AB_Running"
+	@echo "... AB_Walking"
 	@echo "... Continuous"
 	@echo "... ContinuousBuild"
 	@echo "... ContinuousConfigure"
@@ -786,38 +680,25 @@ help:
 	@echo "... NightlySubmit"
 	@echo "... NightlyTest"
 	@echo "... NightlyUpdate"
-	@echo "... ToyProblem"
-	@echo "... ToyProblemNonPeriodic"
 	@echo "... edit_cache"
 	@echo "... install"
 	@echo "... install/local"
+	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"
-	@echo "... SRC/1DHopper.o"
-	@echo "... SRC/1DHopper.i"
-	@echo "... SRC/1DHopper.s"
-	@echo "... SRC/1DHopperNonPer.o"
-	@echo "... SRC/1DHopperNonPer.i"
-	@echo "... SRC/1DHopperNonPer.s"
-	@echo "... SRC/ConstraintsCostsDynamics.o"
-	@echo "... SRC/ConstraintsCostsDynamics.i"
-	@echo "... SRC/ConstraintsCostsDynamics.s"
-	@echo "... SRC/ConstraintsCostsDynamics1DHopper.o"
-	@echo "... SRC/ConstraintsCostsDynamics1DHopper.i"
-	@echo "... SRC/ConstraintsCostsDynamics1DHopper.s"
-	@echo "... SRC/ConstraintsCostsDynamics1DHopperNonPer.o"
-	@echo "... SRC/ConstraintsCostsDynamics1DHopperNonPer.i"
-	@echo "... SRC/ConstraintsCostsDynamics1DHopperNonPer.s"
-	@echo "... SRC/ConstraintsCostsDynamicsNonPeriodic.o"
-	@echo "... SRC/ConstraintsCostsDynamicsNonPeriodic.i"
-	@echo "... SRC/ConstraintsCostsDynamicsNonPeriodic.s"
-	@echo "... SRC/ToyProblem.o"
-	@echo "... SRC/ToyProblem.i"
-	@echo "... SRC/ToyProblem.s"
-	@echo "... SRC/ToyProblemNonPeriodic.o"
-	@echo "... SRC/ToyProblemNonPeriodic.i"
-	@echo "... SRC/ToyProblemNonPeriodic.s"
+	@echo "... SRC/AB_Constraints.o"
+	@echo "... SRC/AB_Constraints.i"
+	@echo "... SRC/AB_Constraints.s"
+	@echo "... SRC/AB_Dynamics.o"
+	@echo "... SRC/AB_Dynamics.i"
+	@echo "... SRC/AB_Dynamics.s"
+	@echo "... SRC/AB_Running.o"
+	@echo "... SRC/AB_Running.i"
+	@echo "... SRC/AB_Running.s"
+	@echo "... SRC/AB_Walking.o"
+	@echo "... SRC/AB_Walking.i"
+	@echo "... SRC/AB_Walking.s"
 .PHONY : help
 
 

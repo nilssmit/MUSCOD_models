@@ -1,8 +1,8 @@
-# Install script for directory: /home/yevyes/Nils/NilsToyProblem
+# Install script for directory: /home/yevyes/Nils/MUSCOD_models/RAMone
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  SET(CMAKE_INSTALL_PREFIX "/home/yevyes/Nils/NilsToyProblem")
+  SET(CMAKE_INSTALL_PREFIX "/home/yevyes/Nils/MUSCOD_models/RAMone")
 ENDIF(NOT DEFINED CMAKE_INSTALL_PREFIX)
 STRING(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,14 +34,14 @@ ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/yevyes/Nils/NilsToyProblem/share/Nils Hoppers/cmake/modules/")
+   "/home/yevyes/Nils/MUSCOD_models/RAMone/share/RAMone/cmake/modules/")
   IF (CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   ENDIF (CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
   IF (CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   ENDIF (CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
-FILE(INSTALL DESTINATION "/home/yevyes/Nils/NilsToyProblem/share/Nils Hoppers/cmake/modules" TYPE DIRECTORY FILES "/home/yevyes/Nils/NilsToyProblem/CMake/Modules/" REGEX "/\\.svn$" EXCLUDE REGEX "/\\.bak$" EXCLUDE REGEX "/\\.BAK$" EXCLUDE REGEX "/\\~$" EXCLUDE REGEX "/CMakeLists\\.txt$" EXCLUDE)
+FILE(INSTALL DESTINATION "/home/yevyes/Nils/MUSCOD_models/RAMone/share/RAMone/cmake/modules" TYPE DIRECTORY FILES "/home/yevyes/Nils/MUSCOD_models/RAMone/CMake/Modules/" REGEX "/\\.svn$" EXCLUDE REGEX "/\\.bak$" EXCLUDE REGEX "/\\.BAK$" EXCLUDE REGEX "/\\~$" EXCLUDE REGEX "/CMakeLists\\.txt$" EXCLUDE)
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(CMAKE_INSTALL_COMPONENT)
@@ -50,7 +50,7 @@ ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "/home/yevyes/Nils/NilsToyProblem/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "/home/yevyes/Nils/MUSCOD_models/RAMone/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "/home/yevyes/Nils/NilsToyProblem/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "/home/yevyes/Nils/MUSCOD_models/RAMone/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)
