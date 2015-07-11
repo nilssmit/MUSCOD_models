@@ -36,9 +36,9 @@ h_name
 
 //  # of multiple shooting intervals on model stages nshoot:
 nshoot
- 0: 10 // Single stance until touchdown
+ 0: 50 // Single stance until touchdown
  1:  1 // Touchdown
- 2: 10 // Double stance until liftoff
+ 2: 50 // Double stance until liftoff
 
 // Model stage duration start values:
 h

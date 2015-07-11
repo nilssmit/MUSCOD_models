@@ -47,7 +47,7 @@ function datStruct = CreateDatStructRAMoneWalk(costFunction,v_avg,sigma,const_se
 
     u  = zeros(4,1);
     h  = [0.5;0;0.5];  
-    nshoot = [10;1;10];
+    nshoot = [50;1;50];
     
     typeString = 'Walking';
     datStruct.libmodel = 'libAB_Walking';
@@ -115,17 +115,17 @@ function datStruct = CreateDatStructRAMoneWalk(costFunction,v_avg,sigma,const_se
     % pitch ([-pi/4,pi/4]), hip joints ([-pi/2, pi/2]),  knee actuators 
     % ([-3*pi/4, pi/4]), and knee joints ([-3*pi/4, -0.05]).
     datStruct.sd_min          = -100*ones(25,1);
-    datStruct.sd_min(3)       = 0.2;
-    datStruct.sd_min(5)       = -pi/4;
-    datStruct.sd_min([7,11])  = -pi/2;
-    datStruct.sd_min(15:2:21) = -3*pi/4;
+    datStruct.sd_min(3)       = 0.2; %y
+    datStruct.sd_min(5)       = -pi/4; %phi
+    datStruct.sd_min([7,11])  = -pi/2; %alphaL,alphaR
+    datStruct.sd_min(15:2:21) = -3*pi/4; %betaL,ubetaL,betaR,ubetaR
     
     datStruct.sd_max          = 100*ones(25,1);
-    datStruct.sd_max(3)       = 0.6;
-    datStruct.sd_max(5)       = pi/4;
-    datStruct.sd_max([7,11])  = pi/2;
-    datStruct.sd_max([15,19]) = -0.05;
-    datStruct.sd_max([17,21]) = pi/4;
+    datStruct.sd_max(3)       = 0.6; %y
+    datStruct.sd_max(5)       = pi/4; %phi
+    datStruct.sd_max([7,11])  = pi/2; %alphaL,alphaR
+    datStruct.sd_max([15,19]) = -0.05; %betaL,betaR
+    datStruct.sd_max([17,21]) = pi/4; %ubetaL,betaR
     
     % Some states fixed at the start of the simulation:
     datStruct.sd_fix_init = zeros(25,1);
