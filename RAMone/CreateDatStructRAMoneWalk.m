@@ -48,7 +48,7 @@ function datStruct = CreateDatStructRAMoneWalk(costFunction,v_avg,sigma,const_se
 
     u  = zeros(4,1);
     h  = [1;0;1];  
-    nshoot = [100;1;100];
+    nshoot = [10;1;10];
     
     typeString = 'Walking';
     datStruct.libmodel = 'libAB_Walking';
@@ -57,9 +57,9 @@ function datStruct = CreateDatStructRAMoneWalk(costFunction,v_avg,sigma,const_se
     datStruct.h_comment = {'Single stance until touchdown'; 'Touchdown'; 'Double stance until liftoff'};
     datStruct.nshoot = nshoot;
     datStruct.h      = h;
-    datStruct.h_sca  = [1.0;0;1.0];
-    datStruct.h_min  = [0.0001;0.0;0.0001];
-    datStruct.h_max  = [5.0;0.0;5.0];
+    datStruct.h_sca  = [0.5;0;0.5];
+    datStruct.h_min  = [0.01;0.0;0.01];
+    datStruct.h_max  = [2.0;0.0;2.0];
     datStruct.h_fix  = [0;1;0];
     
     % Parameterized properties:

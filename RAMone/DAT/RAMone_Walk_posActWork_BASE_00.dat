@@ -36,9 +36,9 @@ h_name
 
 //  # of multiple shooting intervals on model stages nshoot:
 nshoot
- 0: 100 // Single stance until touchdown
+ 0: 10 // Single stance until touchdown
  1:  1 // Touchdown
- 2: 100 // Double stance until liftoff
+ 2: 10 // Double stance until liftoff
 
 // Model stage duration start values:
 h
@@ -48,21 +48,21 @@ h
 
 // Model stage duration scale factors:
 h_sca
- 0:   1.0000000 // Single stance until touchdown
+ 0:   0.5000000 // Single stance until touchdown
  1:   0.0000000 // Touchdown
- 2:   1.0000000 // Double stance until liftoff
+ 2:   0.5000000 // Double stance until liftoff
 
 // Model stage duration lower bound:
 h_min
- 0:   0.0001000 // Single stance until touchdown
+ 0:   0.0100000 // Single stance until touchdown
  1:   0.0000000 // Touchdown
- 2:   0.0001000 // Double stance until liftoff
+ 2:   0.0100000 // Double stance until liftoff
 
 // Model stage duration upper bound:
 h_max
- 0:   5.0000000 // Single stance until touchdown
+ 0:   2.0000000 // Single stance until touchdown
  1:   0.0000000 // Touchdown
- 2:   5.0000000 // Double stance until liftoff
+ 2:   2.0000000 // Double stance until liftoff
 
 // Model stage duration fixed value flags:
 h_fix
