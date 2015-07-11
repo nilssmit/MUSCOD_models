@@ -692,7 +692,7 @@ void AB_Dynamics::ComputeJointForces(){
 		T_spring_betaL = pVec(kbeta1)*(yVec(ubetaL) - yVec(betaL)) + Logistic(yVec(betaL) - yVec(ubetaL) - pVec(betaSmall),pVec(sigma))*(pVec(kbeta1) - pVec(kbeta2)) +
 			              b_betaL *(yVec(dubetaL) - yVec(dbetaL));
 		T_spring_betaR = pVec(kbeta1)*(yVec(ubetaR) - yVec(betaR)) + Logistic(yVec(betaR) - yVec(ubetaR) - pVec(betaSmall),pVec(sigma))*(pVec(kbeta1) - pVec(kbeta2)) +
-			              b_betaL *(yVec(dubetaR) - yVec(dbetaR));
+			              b_betaR *(yVec(dubetaR) - yVec(dbetaR));
 		tau(qbetaL) = T_spring_betaL + 0;
 		tau(qbetaR) = T_spring_betaR + 0;
 	}
