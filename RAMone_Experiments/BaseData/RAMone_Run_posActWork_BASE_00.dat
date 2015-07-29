@@ -4,11 +4,11 @@
  ***********************************************/
 /***********************************************
 *
-*  Gait optimization for an articulating biped in a Walking
+*  Gait optimization for an articulating biped in a Running
 *  gait with series elastic legs
 *
 *
-*   0: 3.00000  // cost_fct_sel  [1; 2; 3]          Cost function selector (1 = posActWorkCOT; 2 = posElWorkCOT; 3 = totElLossCOT)
+*   0: 1.00000  // cost_fct_sel  [1; 2; 3]          Cost function selector (1 = posActWorkCOT; 2 = posElWorkCOT; 3 = totElLossCOT)
 *   1: 0.50000  // v_avg         [m/s]              Enforced average speed
 *   2: 0.05000  // sigma         [rad]              Knee spring regularization constant
 *   3: 0.00000  // const_sel     [binary flags]     1: GroundClearance 2: TorqueLimits 4: SpeedLimits
@@ -17,7 +17,7 @@
 
 // Used Library:
 libmodel
-libAB_Walking
+libAB_Running
 
 // Used Integrators:
 libind
@@ -30,45 +30,45 @@ libind
  ***********************************************/
 // Interval names:
 h_name
- 0: single stance right
- 1: touchdown
- 2: double stance
+ 0: Flight phase
+ 1: Touchdown left
+ 2: Single stance left
 
 //  # of multiple shooting intervals on model stages nshoot:
 nshoot
- 0: 50 // Single stance until touchdown
- 1:  1 // Touchdown
- 2: 50 // Double stance until liftoff
+ 0: 100 // Flight phase until touchdown
+ 1:  1 // Touchdown left
+ 2: 100 // Single stance left
 
 // Model stage duration start values:
 h
- 0:  0.500000 // Single stance until touchdown
- 1:  0.000000 // Touchdown
- 2:  0.500000 // Double stance until liftoff
+ 0:  1.000000 // Flight phase until touchdown
+ 1:  0.000000 // Touchdown left
+ 2:  1.000000 // Single stance left
 
 // Model stage duration scale factors:
 h_sca
- 0:   1.0000000 // Single stance until touchdown
- 1:   0.0000000 // Touchdown
- 2:   1.0000000 // Double stance until liftoff
+ 0:   1.0000000 // Flight phase until touchdown
+ 1:   0.0000000 // Touchdown left
+ 2:   1.0000000 // Single stance left
 
 // Model stage duration lower bound:
 h_min
- 0:   0.1000000 // Single stance until touchdown
- 1:   0.0000000 // Touchdown
- 2:   0.1000000 // Double stance until liftoff
+ 0:   0.0001000 // Flight phase until touchdown
+ 1:   0.0000000 // Touchdown left
+ 2:   0.0001000 // Single stance left
 
 // Model stage duration upper bound:
 h_max
- 0:   2.0000000 // Single stance until touchdown
- 1:   0.0000000 // Touchdown
- 2:   2.0000000 // Double stance until liftoff
+ 0:   5.0000000 // Flight phase until touchdown
+ 1:   0.0000000 // Touchdown left
+ 2:   5.0000000 // Single stance left
 
 // Model stage duration fixed value flags:
 h_fix
- 0: 0 // Single stance until touchdown
- 1: 1 // Touchdown
- 2: 0 // Double stance until liftoff
+ 0: 0 // Flight phase until touchdown
+ 1: 1 // Touchdown left
+ 2: 0 // Single stance left
 
 /***********************************************
  * STATE DEFINITIONS                           *
@@ -108,8 +108,8 @@ s_spec
 // States at the beginning of model stage 0:
 sd(0,S)
  0:   1.0000000 // x          [m]         Main body x position
- 1:   0.5000000 // dx         [m/s]       Main body x velocity
- 2:   0.4000000 // y          [m]         Main body y position
+ 1:   0.2000000 // dx         [m/s]       Main body x velocity
+ 2:   1.0000000 // y          [m]         Main body y position
  3:   0.0000000 // dy         [m/s]       Main body y velocity
  4:   0.0000000 // phi        [rad]       Main body pitch
  5:   0.0000000 // dphi       [rad/s]     Main body pitch velocity
@@ -117,17 +117,17 @@ sd(0,S)
  7:   0.0000000 // dalphaL    [rad/s]     Left hip angular velocity
  8:   0.0000000 // ualphaL    [rad]       Left hip actuator angle
  9:   0.0000000 // dualphaL   [rad/s]     Left hip actuator angular velocity
-10:   0.7853982 // alphaR     [rad]       Right hip angle
+10:   0.0000000 // alphaR     [rad]       Right hip angle
 11:   0.0000000 // dalphaR    [rad/s]     Right hip angular velocity
-12:   0.7853982 // ualphaR    [rad]       Right hip actuator angle
+12:   0.0000000 // ualphaR    [rad]       Right hip actuator angle
 13:   0.0000000 // dualphaR   [rad/s]     Right hip actuator angular velocity
-14:  -0.7853982 // betaL      [rad]       Left knee angle
+14:   0.0000000 // betaL      [rad]       Left knee angle
 15:   0.0000000 // dbetaL     [rad/s]     Left knee angular velocity
-16:  -0.7853982 // ubetaL     [rad]       Left knee actuator angle
+16:   0.0000000 // ubetaL     [rad]       Left knee actuator angle
 17:   0.0000000 // dubetaL    [rad/s]     Left knee actuator angular velocity
-18:  -0.7853982 // betaR      [rad]       Right knee angle
+18:   0.0000000 // betaR      [rad]       Right knee angle
 19:   0.0000000 // dbetaR     [rad/s]     Right knee angular velocity
-20:  -0.7853982 // ubetaR     [rad]       Right knee actuator angle
+20:   0.0000000 // ubetaR     [rad]       Right knee actuator angle
 21:   0.0000000 // dubetaR    [rad/s]     Right knee actuator angular velocity
 22:   0.0000000 // posActWork [J]         Positive actuator work (must initially remain 0)
 23:   0.0000000 // posElWork  [J]         Positive electrical work (must initially remain 0)
@@ -165,7 +165,7 @@ sd_sca(*,*)
 sd_min(*,*)
  0: -100.0000000 // x          [m]         Main body x position
  1: -100.0000000 // dx         [m/s]       Main body x velocity
- 2:   0.2000000 // y          [m]         Main body y position
+ 2:   0.0000000 // y          [m]         Main body y position
  3: -100.0000000 // dy         [m/s]       Main body y velocity
  4: -100.0000000 // phi        [rad]       Main body pitch
  5: -100.0000000 // dphi       [rad/s]     Main body pitch velocity
@@ -193,7 +193,7 @@ sd_min(*,*)
 sd_max(*,*)
  0: 100.0000000 // x          [m]         Main body x position
  1: 100.0000000 // dx         [m/s]       Main body x velocity
- 2:   1.0000000 // y          [m]         Main body y position
+ 2:  10.0000000 // y          [m]         Main body y position
  3: 100.0000000 // dy         [m/s]       Main body y velocity
  4: 100.0000000 // phi        [rad]       Main body pitch
  5: 100.0000000 // dphi       [rad/s]     Main body pitch velocity
@@ -285,7 +285,7 @@ p_name
 
 // Inital values for all global parameters:
 p
- 0:   3.0000000 // cost_fct_sel  [0; 1; 2; 3]       Cost function selector (1 = posActWorkCOT; 2 = posElWorkCOT; 3 = totElLossCOT)
+ 0:   1.0000000 // cost_fct_sel  [0; 1; 2; 3]       Cost function selector (1 = posActWorkCOT; 2 = posElWorkCOT; 3 = totElLossCOT)
  1:   0.5000000 // v_avg         [m/s]              Enforced average speed
  2:   0.0500000 // sigma         [rad]              Knee spring regularization constant
  3:   0.0000000 // const_sel     [binary flags]     1: GroundClearance 2: TorqueLimits 4: SpeedLimits
@@ -331,9 +331,6 @@ u_name
 // Control parameterization type:
 u_type(*)
  0: 2 // TalphaL     [N*m]   Left hip motor torque
- 1: 2 // TalphaR     [N*m]   Right hip motor torque
- 2: 2 // TbetaL      [N*m]   Left knee motor torque
- 3: 2 // TbetaR      [N*m]   Right knee motor torque
 
 // Control start values for all points:
 u(*,*)
@@ -437,7 +434,7 @@ plot_pgplot
  * SETTING ALGORITHMIC PARAMETER               *
  ***********************************************/
 options_acc
-  0.0001000
+  0.0000010
 
 options_ftol
  -1.0000000
@@ -452,7 +449,7 @@ options_levmar
   0.0000000
 
 options_qp_featol
-  0.0010000
+  0.0000000
 
 options_qp_relax
   1.1000000
